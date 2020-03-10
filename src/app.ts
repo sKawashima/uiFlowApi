@@ -19,8 +19,8 @@ app.get('/', (req, res) => {
 })
 
 app.post('/compile', (req, res) => {
-  if (!req.body) res,send(error)
-    res.send(uiflowBuild(req.body.text))
+  if (!req.body.text) res.status(400).send('Error body.text is undefined')
+  else res.send(uiflowBuild(req.body.text))
 })
 
 app.listen(process.env.PORT, () =>
