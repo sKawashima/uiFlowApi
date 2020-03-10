@@ -1,29 +1,32 @@
-import * as uiflow from 'uiflow'
-import { writeFileSync, unlinkSync } from 'fs'
+import { writeFileSync, unlinkSync, createWriteStream, readFileSync } from 'fs'
+import { execSync } from 'child_process'
 
-const uiflowBuild = (source:string) => {
+const readSvg = () => {
   try {
-    writeFileSync('source.txt', source)
-  } catch (err) {
-    console.error(err)
-  }
-
-  uiflow.build('source.txt' , 'svg')
-    .pipe(process.stdout)
-
-  try {
-    unlinkSync('source.txt');
+    return readFileSync('return.svg', 'utf-8');
   } catch (err) {
     console.error(err);
   }
 }
 
-uiflowBuild(`[ページ名]
-表示要素1
-表示要素2
-表示要素3
---
-行動要素1
-===> 遷移先ページ1名
-行動要素2
-===> 遷移先ページ2名`)
+const uiflowBuild = (source:string) => {
+  const tempSourcePath = `${Date.now()}.txt`
+
+  try {
+    writeFileSync(tempSourcePath, source)
+  } catch (err) {
+    console.error(err)
+  }
+
+  const uiflow = execSync(`uiflow -i ${tempSourcePath} -f svg`)
+
+  try {
+    unlinkSync(tempSourcePath)
+  } catch (err) {
+    console.error(err)
+  }
+
+  return uiflow.toString()
+}
+
+export default uiflowBuild
