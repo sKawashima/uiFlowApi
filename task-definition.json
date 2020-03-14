@@ -1,5 +1,7 @@
 {
     "family": "uiflow",
+    "taskRoleArn": "!Ref TaskRole",
+    "executionRoleArn": "arn:aws:iam::${AWS::AccountId}:role/ecsTaskExecutionRole",
     "containerDefinitions": [{
         "name": "uiflow-api",
         "image": ".",
