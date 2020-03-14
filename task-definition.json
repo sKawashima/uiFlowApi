@@ -1,19 +1,18 @@
 {
     "family": "uiflow",
-    "containerDefinitions": [
-        {
-            "name": "uiflow-api",
-            "image": ".",
-            "cpu": 10,
-            "memory": 500,
-            "portMappings": [
-                {
-                    "containerPort": 80,
-                    "hostPort": 80,
-                    "protocol": "tcp"
-                }
-            ],
-            "essential": true
-        }
+    "containerDefinitions": [{
+        "name": "uiflow-api",
+        "image": ".",
+        "cpu": 10,
+        "memory": 500,
+        "portMappings": [{
+            "containerPort": 80,
+            "hostPort": 80,
+            "protocol": "tcp"
+        }],
+        "essential": true
+    }],
+    "requiresCompatibilities": [
+        "FARGATE"
     ]
 }
