@@ -7,5 +7,5 @@ ADD package.json /
 RUN npm i
 
 ADD src/ src/
-EXPOSE 3000
+EXPOSE 80
 CMD npm start

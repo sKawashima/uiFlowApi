@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "PORT=3000 ts-node src/app.ts",
+    "start": "PORT=80 ts-node src/app.ts",
     "dev": "PORT=3000 tsnd src/app.ts"
   },
   "repository": {
