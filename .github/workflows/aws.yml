@@ -78,3 +78,14 @@ jobs:
         service: uiflow-api
         cluster: uiflow
         wait-for-service-stability: true
+
+    - name: Slack Notification
+      uses: homoluctus/slatify@master
+      if: always()
+      with:
+        type: ${{ job.status }}
+        job_name: '*Deploy*'
+        mention: 'here'
+        mention_if: 'failure'
+        channel: '#blog'
+        url: ${{ secrets.SLACK_WEBHOOK }}
