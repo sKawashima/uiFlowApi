@@ -1,5 +1,6 @@
 {
     "family": "uiflow",
+    "executionRoleArn": "ecsTaskExecutionRole",
     "containerDefinitions": [{
         "name": "uiflow-api",
         "image": ".",
@@ -14,5 +15,8 @@
     }],
     "requiresCompatibilities": [
         "FARGATE"
-    ]
+    ],
+    "networkMode": "awsvpc",
+    "cpu": "256",
+    "memory": "512"
 }
