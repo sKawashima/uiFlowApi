@@ -1,4 +1,4 @@
-import { writeFileSync, unlinkSync, createWriteStream, readFileSync } from 'fs'
+import { writeFileSync, unlinkSync, readFileSync } from 'fs'
 import { execSync } from 'child_process'
 
 const readSvg = () => {
